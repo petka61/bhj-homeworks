@@ -21,7 +21,7 @@ if (minutes < 10) {
   if (hours == 0 && minutes == 0 && seconds == -1) {
     alert("Вы победили в конкурсе!");
     clearInterval(interval);
-    window.location.assign('vasiliev.txt'); 
+    window.location.assign('vasiliev.txtt'); 
   } else if (seconds == -1) {
     seconds = 59;
     minutes--;
