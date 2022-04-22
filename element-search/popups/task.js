@@ -1,13 +1,19 @@
-const modal = document.getElementById('modal_main');
+const modal = document.querySelector('.modal')
 modal.classList.add('modal_active');
 
-const success = document.getElementById('modal_success');
+const modal_close = document.querySelectorAll('div.modal__close')
 
-function closePopUp(){
-  return modal.classList.remove('modal_active'),
-  success.classList.remove('modal_active');
+for (let i = 0; i < modal_close.length; i++) {
+  modal_close[i].addEventListener("click", function() {
+    let closest = this.closest(".modal")
+    closest.classList.toggle("modal_active")
+  })
 }
 
-function changeButton() {
-   return success.classList.add('modal_active');
+const success = document.getElementById('modal_success');
+const btn = document.querySelector('.show-success')
+
+btn.onclick = function() {
+  success.classList.add('modal_active');
+  modal.classList.remove('modal_active');
 }

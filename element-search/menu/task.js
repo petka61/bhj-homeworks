@@ -1,9 +1,22 @@
-const menu_link = document.querySelectorAll('.menu__link')
-const menu_sub = Array.from(document.querySelectorAll(".menu_sub"))
+const menu_item = Array.from(document.querySelectorAll('.menu__item'))
+const menu_link = Array.from(document.querySelectorAll('.menu__link'))
 
-menu_link.forEach(item => item.onclick = addMenu)
+for (let i in menu_link) {
+  menu_link[i].addEventListener("click", function(item) {
+    item.preventDefault();
+  })
+}
 
-function addMenu() {
-  menu_sub.forEach(item => item.classList.add('menu_active'))
-  return false
+for (let i in menu_item) {
+  if (menu_item[i].querySelector('.menu_sub')) {
+    menu_item[i].querySelector('.menu__link').addEventListener("click", function() {
+      const menu_sub = Array.from(document.querySelectorAll('.menu_sub'))
+      for (let p in menu_sub) {
+        if (menu_sub[p].classList.contains("menu_active")) {
+          menu_sub[p].classList.remove("menu_active")
+        }
+      }
+      menu_item[i].querySelector('.menu_sub').classList.toggle("menu_active")
+    })
+  }
 }
