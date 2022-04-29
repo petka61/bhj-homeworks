@@ -1,22 +1,18 @@
-const menu_item = Array.from(document.querySelectorAll('.menu__item'))
-const menu_link = Array.from(document.querySelectorAll('.menu__link'))
+const menuLink = Array.from(document.querySelectorAll('.menu__link'))
 
-for (let i in menu_link) {
-  menu_link[i].addEventListener("click", function(item) {
-    item.preventDefault();
-  })
-}
-
-for (let i in menu_item) {
-  if (menu_item[i].querySelector('.menu_sub')) {
-    menu_item[i].querySelector('.menu__link').addEventListener("click", function() {
-      const menu_sub = Array.from(document.querySelectorAll('.menu_sub'))
-      for (let p in menu_sub) {
-        if (menu_sub[p].classList.contains("menu_active")) {
-          menu_sub[p].classList.remove("menu_active")
+for (let item of menuLink){
+    item.onclick = function(event){
+        const sub = item.closest(".menu__item").querySelector('.menu_sub');
+        if(document.querySelector('.menu_active')){
+            if (sub.className.includes('menu_active')){
+                sub.classList.remove('menu_active');
+                return false;
+            }
+            document.querySelector('.menu_active').classList.remove('menu_active');
         }
-      }
-      menu_item[i].querySelector('.menu_sub').classList.toggle("menu_active")
-    })
-  }
+        if(sub){
+            sub.classList.add('menu_active');
+        }
+        event.preventDefault();
+    }
 }
