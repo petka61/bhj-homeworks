@@ -1,13 +1,16 @@
 const tab = Array.from(document.querySelectorAll(".tab"));
-const tab_content = Array.from(document.querySelectorAll(".tab__content"));
+const tabContent = Array.from(document.querySelectorAll(".tab__content"));
+const tabNavi = Array.from(document.querySelectorAll(".tab__navigation"));
 
 for (let i in tab) {
   tab[i].addEventListener("click", openTabs => {
-    const click_index = tab.indexOf(tab[i]);
-    for (let p in tab_content) {
-      tab_content[p].classList.remove("tab__content_active")
-      if (click_index === tab_content.indexOf(tab_content[p])) {
-        tab_content[p].classList.add("tab__content_active");
+    tab.forEach(item => item.classList.remove("tab_active"))
+    const clickIndex = tab.indexOf(tab[i]);
+    for (let p in tabContent) {
+      tabContent[p].classList.remove("tab__content_active")
+      if (clickIndex === tabContent.indexOf(tabContent[p])) {
+        tabContent[p].classList.add("tab__content_active");
+        tab[clickIndex].classList.add("tab_active")
       }
     }
   })
