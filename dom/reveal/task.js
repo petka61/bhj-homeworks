@@ -1,12 +1,14 @@
 const reveal = document.querySelectorAll(".reveal");
 
-for (let i in reveal) {
+
   window.addEventListener("scroll", function() {
-    const { top, bottom } = reveal[i].getBoundingClientRect();
-    if (bottom > 50) {
-      reveal[i].classList.add("reveal_active")
-    } else if (top < 50) {
-      reveal[i].classList.remove("reveal_active")
+  reveal.forEach(item => {
+    if (window.innerHeight > item.getBoundingClientRect().top &&
+        item.getBoundingClientRect().bottom > 0) {
+      item.classList.add("reveal_active")
+    } else {
+      item.classList.remove("reveal_active")
     }
-  })
-}
+  }
+)}
+)
