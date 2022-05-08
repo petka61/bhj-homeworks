@@ -5,8 +5,7 @@ const modalClose = document.querySelectorAll('div.modal__close')
 
 for (let i = 0; i < modalClose.length; i++) {
   modalClose[i].addEventListener("click", function() {
-    let closest = this.closest(".modal")
-    closest.classList.toggle("modal_active")
+this.closest(".modal").classList.toggle("modal_active")
   })
 }
 
