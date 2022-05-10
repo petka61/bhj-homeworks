@@ -1,11 +1,11 @@
 const menuLink = Array.from(document.querySelectorAll('.menu__link'))
-const aaa = Array.from(document.querySelectorAll('.menu_sub'))
+const allSubs = Array.from(document.querySelectorAll('.menu_sub'))
 
-aaa.forEach(item => {
+allSubs.forEach(item => {
   item.previousElementSibling.onclick = function(event) {
     if (item.classList.contains('menu_active')) {
       item.classList.remove('menu_active');
-      // return false;
+      return false;
     } else if (document.querySelector('.menu_active') === null) {
       item.classList.add('menu_active')
     } else {
